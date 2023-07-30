@@ -12,7 +12,7 @@ const io = new Server(4001, {
 
 let userList = []
 io.on("connection", (socket) => {
-    const { userId, username } = socket.handshake.query
+    const { userId, username, img } = socket.handshake.query
     if(!userId) return
     const userInfo = userList.find(item => item.userId === userId)
     // 如果不存在
@@ -20,12 +20,14 @@ io.on("connection", (socket) => {
         userList.push({
             username,
             userId,
-            socketId:socket.id
+            socketId:socket.id,
+            img,
         })
     }else{
         // 存在的话要更新id
         userInfo.socketId = socket.id
     }
+    console.log(userList);
     // 广播上线
     io.emit('online',{
         userList
