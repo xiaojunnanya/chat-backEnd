@@ -27,7 +27,6 @@ io.on("connection", (socket) => {
         // 存在的话要更新id
         userInfo.socketId = socket.id
     }
-    console.log(userList);
     // 广播上线
     io.emit('online',{
         userList

@@ -18,5 +18,6 @@ const db = mysql.createConnection({
 
 module.exports ={
     db,
-    upImgPath
+    upImgPath,
+    escape: mysql.escape
 }

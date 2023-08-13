@@ -28,7 +28,6 @@ headImg.post('/avatar',upload.single('headImg'),async (req, res )=>{
     const { filename, mimetype } = req.file
 
     db.query(sql,[ userId , filename, mimetype ], (err,result)=>{
-        console.log(err);
         if(!err){
             res.send({
                 code:200,

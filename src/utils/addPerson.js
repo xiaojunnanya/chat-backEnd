@@ -1,6 +1,5 @@
 function addPerson(socket, userList){
     const { userId, username } = socket.handshake.query
-    console.log(userId);
     if(!userId) return
     const userInfo = userList.find(item => item.userId === userId)
     // 如果不存在

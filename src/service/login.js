@@ -1,7 +1,7 @@
 const express = require('express')
 const login = express()
 const crypto = require("crypto")
-const { db } = require('../sql/sql')
+const { db, escape } = require('../sql/sql')
 const { SECRET_KEY } = require('../config/index')
 const { upImgPath } = require('../sql/sql')
 // 生成token
@@ -10,6 +10,10 @@ const jwt = require('jsonwebtoken')
 const uuid = crypto.randomUUID({ disableEntropyCache: true })
 
 db.connect()
+
+// 防止sql注入
+//  const sql = `select * from userinfo where username = ${escape(req.body.username)} 
+//  && password = ${escape(req.body.password)}`
 
 
 // 登录
@@ -72,7 +76,6 @@ login.get('/test',(req, res)=>{
     })
 })
 
-db.connect()
 
 module.exports = {
     login

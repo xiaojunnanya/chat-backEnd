@@ -24,5 +24,5 @@ app.use(chat)
 app.use(canvas)
 
 app.listen(9002, ()=>{
-    console.log("express服务器启动成功");
+    console.log("express服务器启动成功,9002端口");
 })
